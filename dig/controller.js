@@ -1,12 +1,15 @@
 $(function () {
     cargaChat();
+    if (cookieUsuario != undefined) {        
+        $('#pantallas').append('<img style="width: 99%;" id="img-'+cookieUsuario+'" >');
+    }    
 });
 
 function cargaChat() {
-    var cookieUsuario = Cookies.get('nombreUsuario');
+    cookieUsuario = Cookies.get('nombreUsuario');
     if (cookieUsuario != undefined) {
         $('#nombreCookie').text('USUARIO: ' + cookieUsuario);
-        $('#nombre').css('display', 'none')
+        $('#nombre').css('display', 'none')        
     }
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
@@ -19,52 +22,7 @@ function cargaChat() {
 }
 
 function videollamadaSaliente() {
-    /*var req = new XMLHttpRequest();
-    req.onreadystatechange = function () {
-        console.log(req.status);
-        if (req.readyState == 4 && req.status == 200) {
-
-        }
-    }
-    req.open('GET', 'server.php', true);
-    req.send();*/
-    var bandera = 0;
-    //si el navegador soporta esta caracteristica 
-    window.URL = window.URL || window.webkitURL;
-    navigator.getUserMedia = (navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia);
-    if (navigator.getUserMedia) //si es compatible
-    {
-        navigator.getUserMedia({
-            audio: false,
-            video: true
-        },
-            function (vid) {
-                bandera = 1;
-                //document.querySelector('video').src = window.URL.createObjectURL(vid);
-                document.querySelector('video').srcObject = vid;
-            },
-            function (err) {
-                console.log("The following error occured: " + err);
-            }
-        );
-    } else {
-        console.log("getUserMedia not supported");
-    }
-
-    window.requestAnimFrame = (function (callback) {
-        return window.requestAnimationFrame ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            function (callback) {
-                window.setTimeout(callback, 1000 / 100);
-            };
-    })();
-    window.addEventListener('load', init);
+    $('#streaming').css('display','block')       
 }
 
 setInterval(function () {
@@ -80,19 +38,9 @@ function validacionCookie() {
     }*/
 }
 
-function video(img) {
-    document.querySelector('#miImg').src = img;
-    document.getElementById('texto').value = img;
-}
-
-
-
-
-
-
-
-function video(img) {
-    document.querySelector('#miImg').src = img;
+function video(img) {    
+    document.querySelector('#img-'+cookieUsuario).src = img;
+    //document.getElementById('texto').value = img;
 }
 
 function init() {

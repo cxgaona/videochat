@@ -1,0 +1,31 @@
+1. Configuración del Xampp
+en el archivo xampp/php/php.ini buscar la línea extension=sockets y si tiene un ; borrarlo:
+Antes: ;extension=sockets
+Despues: extension=sockets
+
+2.Configuración del aplicativo:
+
+En el archivo dig/server.php, en la línea 61, reemplazar la IP por tu Ip local
+Antes: $Server->wsStartServer('10.0.0.168',12345);
+Despues: $Server->wsStartServer('127.0.0.1',12345);
+
+En el archivo js/fancywebsocket.js, en la linea 59, reemplazar la IP por tu Ip local
+Antes: Server = new FancyWebSocket('ws://10.0.0.168:12345');
+Despues: Server = new FancyWebSocket('ws://127.0.0.1:12345');
+
+3. Para ejecutar el Proyecto:
+abrir una pestaña en el navegador (se recomienda Firefox) y pegar la siguiente url:
+http://localhost/videoChat/dig/server.php
+Nota: esta pestaña es el servidor que maneja los websockets del videochat 
+(esta pestaña debe mantenerse abierta mientras se vaya a utilizar el aplicativo)
+
+Ejecutar el aplicativo con la siguiente url:
+http://localhost/videoChat/dig/index.php
+
+4. Observaciones del aplicativo:
+Se agregaron cookies para el usuario del chat, por lo cual, antes de realizar una videollamada, es necesario ingresar el nombre del usuario.
+Se agregó una funcionalidad para limpiar el chat.
+
+Cualquier duda comunicarse a los siguientes contactos:
+Christian Gaona		0958791210
+Cristian Remache	0984679381

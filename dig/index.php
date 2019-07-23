@@ -18,32 +18,13 @@ include "db.php";
         }
     </style>
 
-    <script type="text/javascript">
-        function validacionCookie() {
-            /*var cookieVideollamada = Cookies.get('videollamada');
-            if (cookieVideollamada != undefined) {
-                videollamadaSaliente()
-            }*/
-        }
 
-        function video(img) {
-            document.querySelector('#miImg').src = img;
-            document.getElementById('texto').value = img;
-        }
-    </script>
 
 </head>
 
 <body>
     <table>
-        <tr>
-            <td style="vertical-align: top; text-align: center">
-                <div>
-                    <video autoplay id="video" style="width: 300px"></video>
-                    <canvas id='miCanvas'></canvas>
-                    <img id='miImg'>                   
-                </div>
-            </td>
+        <tr>            
             <td>
                 <div id="contenedor">
                     <div id="caja-chat" class="divScroll">
@@ -57,7 +38,7 @@ include "db.php";
                         <input type="submit" name="enviar" value="Enviar">
                         <input type="submit" name="borrarChat" value="Limpiar Chat">
                         <input type="button" id="videollamada" onclick="videollamadaSaliente()" value="Videollamada">
-                        <input type="button" id="no se" onclick="abrirCliente()" value="Tu madre">
+                        
                     </form>
                     <?php
                     if (isset($_POST['enviar'])) {
@@ -93,8 +74,16 @@ include "db.php";
                     ?>
                 </div>
             </td>
+            <td style="vertical-align: top; text-align: center">
+                <div id='pantallas'>
+                    <video autoplay id="video" style="width: 400px; height:50px"></video>
+                    <iframe id="streaming" src="tutoStreaming.html" style="display:none; width: 400px; height: 200px"></iframe>                    
+                    <img id='miImg' style="width: 99%;">
+                </div>
+            </td>
         </tr>
     </table>
+    <input type='hidden' value='1' id='contador'>    
 </body>
 
 <script language="javascript" src="js/jquery-1.7.2.min.js"></script>

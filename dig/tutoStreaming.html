@@ -5,7 +5,7 @@
 	video{ display:none;}
 	</style>
 </head>
-<body>
+<body style="text-align: center">
 	<video autoplay id="video"></video>
 	<canvas id='miCanvas' width='200' height='150'></canvas>
     <script language="javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -22,7 +22,7 @@
 
 		if (navigator.getUserMedia) //si es compatible
 		{		
-			navigator.getUserMedia ({audio: false, video:true},	
+			navigator.getUserMedia ({audio: true, video:true},	
 			function(vid) 
 			{
 				bandera = 1;
