@@ -56,7 +56,7 @@ function send( text )
 }
 $(document).ready(function() 
 {
-	Server = new FancyWebSocket('ws://10.0.0.168:12345');
+	/*Server = new FancyWebSocket('ws://10.0.0.168:12345');
     Server.bind('open', function()
 	{
     });
@@ -66,7 +66,7 @@ $(document).ready(function()
     Server.bind('message', function( payload ) 
 	{
     });
-    Server.connect();
+    Server.connect();*/
 });
 
 

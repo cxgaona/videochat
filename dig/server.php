@@ -34,15 +34,17 @@ function wsOnClose($clientID, $status) {
 	foreach ( $Server->wsClients as $id => $client )
 		$Server->wsSend($id, "");
 }
-$Server = new PHPWebSocket();
-$Server->bind('message', 'wsOnMessage');
-$Server->bind('open', 'wsOnOpen');
-$Server->bind('close', 'wsOnClose');
-if($_SERVER['REMOTE_ADDR']=="::1"){
- 	$ipServidor="127.0.0.1";
-}else{
-	$ipServidor=$_SERVER['REMOTE_ADDR'];
+function servidor(){
+	$Server = new PHPWebSocket();
+	$Server->bind('message', 'wsOnMessage');
+	$Server->bind('open', 'wsOnOpen');
+	$Server->bind('close', 'wsOnClose');
+	if($_SERVER['REMOTE_ADDR']=="::1"){
+ 		$ipServidor="127.0.0.1";
+	}else{
+		$ipServidor=$_SERVER['REMOTE_ADDR'];
+	}
+	$Server->wsStartServer($ipServidor,12345);
 }
-$Server->wsStartServer($ipServidor,12345);
+
 //$Server->wsStartServer('192.168.43.206',12345);
-?>
